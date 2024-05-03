@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Raspberry Pi Dashboard</title>
+    <!-- Include Bootstrap CSS from CDN -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <!-- Include Socket.IO client from CDN -->
+    <script src="https://cdn.socket.io/4.0.0/socket.io.min.js"></script>
+        <!-- Include Chart.js library from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  </head>
+
+  <body>
+    <div class="container-fluid d-flex flex-column">
+      <h1 class="text-center">Raspberry Pi Sensordaten</h1>
+
+      <!-- Row with three columns for sensor data -->
+      <div class="row" style="flex: 1 1 auto">
+        <!-- first sensor -->
+
+        <div
+          class="col-12 col-md-4 d-flex flex-column justify-content-center align-items-center"
+          style="flex: 1 1 auto"
+        >
+          <h2><strong>Wasserstand</strong></h2>
+          <div id="parksensorValue">Warte auf die Daten...</div>
+          <div
+            id="svgContainerWaterJug"
+            style="width: 300px; height: 300px; padding-top: 20px"
+          ></div>
+          <!-- Container for the SVG -->
+        </div>
+
+        <!-- second sensor -->
+
+        <div
+          class="col-12 col-md-4 d-flex flex-column justify-content-center align-items-center"
+          style="flex: 1 1 auto"
+        >
+          <h2><strong>Parksensor</strong></h2>
+          <div id="abstandssensorValue">Warte auf die Daten...</div>
+          <div
+            id="svgContainerParking"
+            style="width: 300px; height: 300px"
+          ></div>
+          <!-- Container for the SVG with parking icon  -->
+        </div>
+
+        <!-- third sensor -->
+
+        <div
+          class="col-12 col-md-4 d-flex flex-column justify-content-center align-items-center"
+          style="flex: 1 1 auto"
+        >
+          <h2><strong>Bodenfeuchte</strong></h2>
+          <div id="bodenfeuchtesensorValue">Warte auf die Daten...</div>
+          <div
+            id="svgContainerSoilMoisture"
+            style="width: 300px; height: 300px"
+          ></div>
+          <!-- Container for the SVG with parking icon  -->
+        </div>
+      </div>
+        <div class="col-12" style="margin-bottom: 20px; max-height: 300px;">
+        <canvas id="myChart"  style="max-height: 400px; width: 100%;"></canvas>
+      </div>
+    </div>
+    <!-- script to handle receiving the data via the websocket -->
+    <script src="{{ url_for('static', filename='js/websocketConnection.js') }}"></script>
+    <!-- script to load the svgs that will be changed dynamically with the websocket data -->
+    <script src="{{ url_for('static', filename='js/loadSVG.js') }}"></script>
+    <script>
+      var socket = io();  // Connects to the server hosting the page by default
+    </script>
+    <script src="{{ url_for('static', filename='js/lineChart.js') }}"></script>
+  </body>
+</html>
