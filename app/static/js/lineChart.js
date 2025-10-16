@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     socket.on('sensor_update', function(data) {
-        var date = new Date(data.mid * 1000); // Ensure your timestamp is in seconds
+        var date = new Date(data.timestamp * 1000); // Ensure your timestamp is in seconds
         var formattedDate = date.toLocaleTimeString(); // Converts to human-readable time
         
         myChart.data.labels.push(formattedDate);
