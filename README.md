@@ -1,4 +1,4 @@
-# Real-Time Sensor Visualization Dashboard
+# IoT Data Pipeline and Dashboard with MQTT and Raspberry Pi
 
 An interactive educational platform designed to show students how IoT sensors work and how real-time data can be visualized. This project demonstrates a complete pipeline from sensor emiting data through MQTT messaging to live web-based visualization. Originally developed with a Raspberry Pi using distance and moisture sensors, this version includes a data simulator for easier demonstration and testing.
 
