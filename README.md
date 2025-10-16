@@ -1,12 +1,12 @@
 # Real-Time Sensor Visualization Dashboard
 
-An interactive educational platform designed to show students how IoT sensors work and how real-time data can be visualized. This project demonstrates a complete pipeline from sensor simulation through MQTT messaging to live web-based visualization.
+An interactive educational platform designed to show students how IoT sensors work and how real-time data can be visualized. This project demonstrates a complete pipeline from sensor emiting data through MQTT messaging to live web-based visualization. Originally developed with a Raspberry Pi using distance and moisture sensors, this version includes a data simulator for easier demonstration and testing.
 
 ## Project Overview
 
 This system consists of three main components working together:
 
-- **MQTT Simulator** (`simulate.py`): Generates sensor data (temperature, humidity, distance, water level)
+- **MQTT Simulator** (`simulate.py`): Generates sensor data (temperature, humidity, distance, water level). It can easily be replaced with a real MQTT publisher, for example running on a Raspberry Pi connected to physical sensors.
 - **MQTT Subscriber** (`mqtt_subscriber.py`): Receives sensor data and broadcasts it via WebSocket
 - **Flask Web App**: Real-time dashboard that visualizes incoming sensor data with interactive SVG components
 
@@ -17,15 +17,6 @@ Perfect for teaching students:
 - MQTT protocol for device-to-server communication
 - Real-time data visualization in web applications
 - System architecture and integration
-
-## Requirements
-
-```
-paho-mqtt>=1.7.0
-flask>=2.0.0
-flask-socketio>=5.0.0
-python-socketio>=5.0.0
-```
 
 ## Installation
 
@@ -78,7 +69,7 @@ You should see data flowing through:
 
 ```
 ┌─────────────────┐
-│  MQTT Simulator │ → generates fake sensor data
+│  MQTT Simulator │ → generates sensor data
 └────────┬────────┘
          │ (publishes)
          ↓
